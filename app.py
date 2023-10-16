@@ -25,7 +25,8 @@ mail = Mail(app)
 
 @app.route('/')
 def index():
-    return 'Welcome to the Financial Tracker'
+
+    return render_template('mainpage.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -86,11 +87,6 @@ def track_expenses():
     if request.method == 'POST':
         reason = request.form['reason']
         expense = int(request.form['expense'])
-        percentage = int(request.form["percentage"])
-
-        # Calculate spending amount
-        percentages = percentage / 100
-        spendingamount = percentages * percentage
 
 
         transactions[reason] = expense
@@ -122,6 +118,10 @@ def download_file():
             writer.writerow([category, expense, expense_type])
     return send_file('transactions.csv', as_attachment=True)
 
+@app.route('/logout')
+def logout():
+    session.pop('email', None)
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)

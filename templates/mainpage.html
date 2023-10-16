@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body, html {
+            height: 100%;
+        }
+
+        .parallax {
+            background-image: url('{{ url_for('static', filename='images/mainimage.jpg') }}');
+            height: 100%;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <img src="{{ url_for('static', filename='images/navbar-logo.png') }}" alt="Navbar Logo">
+    <div class="nav-links">
+        {% if 'email' in session %}
+            <a href="{{ url_for('track_expenses') }}">Track Expenses</a>
+            <a href="{{ url_for('download_file') }}">Download Transactions</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ url_for('login_page') }}">Login</a>
+            <a href="{{ url_for('signup_page') }}">Signup</a>
+        {% endif %}
+    </div>
+</nav>
+
+<div class="parallax"></div>
+
+    <div class="centered-text">
+        <h1>Welcome to Smash</h1>
+        <h8>Meet Smash, your simple finance buddy. It helps you see where your money goes without the fuss. Track daily spending, save for goals, and get a clear money picture. Make managing money easy. Try Smash today!</h8>
+    </div>
+
+
+<div style="height:1000px;background-color:white;font-size:36px">
+
+</div>
+
+<div class="parallax"></div>
+
+</body>
+</html>

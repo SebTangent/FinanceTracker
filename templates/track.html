@@ -12,8 +12,7 @@
         <label for="expense">Expense ($):</label>
         <input type="number" id="expense" name="expense"><br>
 
-        <label for="percentage">Percentage to Save (%):</label>
-        <input type="number" id="percentage" name="percentage"><br>
+
 
         <input type="submit" value="Submit">
     </form>
@@ -25,7 +24,7 @@
     <h3>Budget:</h3>
     <p>Your Budget: ${{ budget }}</p>
     <p>Amount Left: ${{ amountleft }}</p>
-    <p>Target Percentage to Save: {{ percentage }}%</p>
+
 
     {% if spendingamount > budget %}
     <p style="color:red;">You've spent more than your budget!</p>
